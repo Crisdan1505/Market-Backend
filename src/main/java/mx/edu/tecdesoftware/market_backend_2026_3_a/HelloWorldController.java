@@ -1,5 +1,14 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_a;
 
-public class HelloWorldController{
-    @Rest
-}
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+    @RestController
+    public class HelloWorldController{
+
+        @GetMapping("/hola")
+        public String saludar(){
+            return "Hello World";
+        }
+        
+    }
