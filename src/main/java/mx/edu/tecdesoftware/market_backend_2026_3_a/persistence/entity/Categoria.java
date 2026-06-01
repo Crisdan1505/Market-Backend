@@ -1,6 +1,7 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_a.persistence.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table (name = "compras")
@@ -14,6 +15,9 @@ public class Categoria {
     private String descripcion;
 
     private Boolean estado;
+
+    @OneToMany(mappedBy = "categorias")
+    private List<Producto>productos;
 
     public Boolean getEstado() {
         return estado;

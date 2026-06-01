@@ -3,6 +3,8 @@ package mx.edu.tecdesoftware.market_backend_2026_3_a.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table (name = "clientes")
 public class Cliente {
@@ -20,6 +22,11 @@ public class Cliente {
 
     @Column (name = "correo_lectronico")
     private String correoElectronico;
+
+    //Un cliente tiene muchas compras
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
+
 
     public String getId() {
         return id;
