@@ -3,34 +3,33 @@ package mx.edu.tecdesoftware.market_backend_2026_3_a.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "productos")
+@Table (name = "prodcutos")
 public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_producto")
+    @Column(name = "id:Producto")
     private Integer idProducto;
 
     private String nombre;
 
-    @Column(name = "id_categorias")
+    @Column (name = "id:categoria")
     private Integer id_categoria;
 
-    @Column(name = "codigo_barras")
-    private Integer codigos_barras;
+    @Column (name = "codigo_barras")
+    private Integer codigoBarras;
 
-    @Column(name = "precio_venta")
-    private Integer prercio_venta;
+    @Column (name = "precio_venta")
+    private Integer precioVenta;
 
-    @Column(name = "cantidad_stock")
-    private Integer cantidad_stock;
+    @Column (name = "cantidad_stock")
+    private Integer cantidadStock;
 
-    private boolean estado;
+    private Boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria",
-    insertable=false, updatable=false
-    )
+            insertable = false, updatable = false)
     private Categoria categoria;
 
     public Integer getIdProducto() {
@@ -57,35 +56,43 @@ public class Producto {
         this.id_categoria = id_categoria;
     }
 
-    public Integer getCodigos_barras() {
-        return codigos_barras;
+    public Integer getCodigoBarras() {
+        return codigoBarras;
     }
 
-    public void setCodigos_barras(Integer codigos_barras) {
-        this.codigos_barras = codigos_barras;
+    public void setCodigoBarras(Integer codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 
-    public Integer getPrercio_venta() {
-        return prercio_venta;
+    public Integer getPrecioVenta() {
+        return precioVenta;
     }
 
-    public void setPrercio_venta(Integer prercio_venta) {
-        this.prercio_venta = prercio_venta;
+    public void setPrecioVenta(Integer precioVenta) {
+        this.precioVenta = precioVenta;
     }
 
-    public Integer getCantidad_stock() {
-        return cantidad_stock;
+    public Integer getCantidadStock() {
+        return cantidadStock;
     }
 
-    public void setCantidad_stock(Integer cantidad_stock) {
-        this.cantidad_stock = cantidad_stock;
+    public void setCantidadStock(Integer cantidadStock) {
+        this.cantidadStock = cantidadStock;
     }
 
-    public boolean isEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

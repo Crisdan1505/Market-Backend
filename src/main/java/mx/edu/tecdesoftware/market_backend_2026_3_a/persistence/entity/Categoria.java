@@ -4,27 +4,29 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name = "compras")
+@Table(name = "categorias")
+
 public class Categoria {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "id_categoria")
-    private int idCategoria;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cateegoria")
+    private Integer idCategoria;
 
     private String descripcion;
 
     private Boolean estado;
 
-    @OneToMany(mappedBy = "categorias")
-    private List<Producto>productos;
+    //Una categoría va a tener muchos productos
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
-    public Boolean getEstado() {
-        return estado;
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getDescripcion() {
@@ -35,11 +37,19 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public Boolean getEstado() {
+        return estado;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 }

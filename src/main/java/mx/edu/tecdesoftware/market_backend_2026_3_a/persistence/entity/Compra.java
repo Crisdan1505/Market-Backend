@@ -1,38 +1,41 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_a.persistence.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 @Entity
 @Table (name = "compras")
 public class Compra {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "id_Compra")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column ( name = "id_compra")
     private Integer idCompra;
 
-    @Column (name = "id_cliente")
-    private String idCliente;
+    @Column (name = "iid_cliente")
+    private String Idcliente;
 
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
     @Column (name = "medio_pago")
     private String medioPago;
 
     private String comentario;
-
     private String estado;
-    //Relacion con cliente
-    //Muchas Compras para un cliente
+
+    //Relación con cliente:
+    //Muchas compras para un cliente
     @ManyToOne
-    @JoinColumn(name="id_cliente",
-    insertable=false, updatable=false)
+    @JoinColumn(name = "id_cliente",
+            insertable = false, updatable = false)
     private Cliente cliente;
 
     //Una compra tiene muchos productos
     @OneToMany(mappedBy = "compra")
-    private List<CompraProducto>productos;
+    private List<Compra_Producto> productos;
+
 
     public Integer getIdCompra() {
         return idCompra;
@@ -42,19 +45,19 @@ public class Compra {
         this.idCompra = idCompra;
     }
 
-    public String getIdCliente() {
-        return idCliente;
+    public String getIdcliente() {
+        return Idcliente;
     }
 
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
+    public void setIdcliente(String idcliente) {
+        Idcliente = idcliente;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
@@ -80,5 +83,21 @@ public class Compra {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<CompraProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<CompraProducto> productos) {
+        this.productos = productos;
     }
 }

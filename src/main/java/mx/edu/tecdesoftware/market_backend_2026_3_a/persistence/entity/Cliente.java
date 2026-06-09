@@ -1,32 +1,27 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_a.persistence.entity;
 
-
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
-@Table (name = "clientes")
+@Table ( name = "clientes")
+
 public class Cliente {
 
     @Id
     private String id;
 
     private String nombre;
-
     private String apellidos;
-
     private String celular;
-
     private String direccion;
 
-    @Column (name = "correo_lectronico")
+    @Column (name = "correo_electronico")
     private String correoElectronico;
 
     //Un cliente tiene muchas compras
     @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
-
 
     public String getId() {
         return id;
@@ -74,5 +69,13 @@ public class Cliente {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
+    }
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
 }
